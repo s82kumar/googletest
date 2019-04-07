@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="GoogleSearchTests">
+	<test name="Google TestCases">
+		<classes>
+			<class name="com.org.ui.tests.GoogleTest" />
+			<methods>
+				<include name="testGoogleSearch" />
+			</methods>
+		</classes>
+	</test>
+</suite>
