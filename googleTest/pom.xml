@@ -116,6 +116,53 @@
 				</plugins>
 			</build>
 		</profile>
+		
+			<profile>
+			<id>qa</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<delete file="C:/Users/mansan/git/googletest/googleTest/Resources/local.properties" />
+										<copy file="C:/Users/mansan/git/googletest/googleTest/Resources/automation.properties" 
+										tofile="C:/Users/mansan/git/googletest/googleTest/Resources/automation.properties" />
+											   <echo>Hello world! this is sandeeeeeeeeeeeeeeeeeeep</echo>
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+					</plugin>
+					<plugin>
+						<artifactId>maven-jar-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+								<configuration>
+									<classifier>prod</classifier>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 
 

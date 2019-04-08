@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Maven') {
+            steps {
+                fileExists 'C:\\Users\\mansan\\git\\googletest\\googleTest\\Resources\\local.properties'
+                properties([parameters([choice(choices: ['local', 'automation'], description: 'property files', name: 'propertyfiles')])])
+                echo 'Testing..'
+                if(-DpropertyName=="local"){
+                sh 'mvn -Pprod clean test '
+                  echo 'Testing sandeeeeeeeeeeeeeeep prod environment..'
+                  }
+                  if(-DpropertyName=="automation"){
+                sh 'mvn -Pqa clean test '
+                  echo 'Testing sandeeeeeeeeeeeeeeep..qa environment'
+                  }
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
