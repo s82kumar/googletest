@@ -1,9 +1,11 @@
 pipeline {
     agent any
+    {steps{script{}}}
 
     stages {
         stage('Maven') {
             steps {
+                script{
                 fileExists 'C:\\Users\\mansan\\git\\googletest\\googleTest\\Resources\\local.properties'
                 properties([parameters([choice(choices: "local", "automation", description: 'property files', name: 'propertyfiles')])])
                 echo 'Testing..'
@@ -13,6 +15,7 @@ pipeline {
      
                  case "automation" :sh 'mvn -Pqa clean test '
                   echo 'Testing sandeeeeeeeeeeeeeeep..qa environment'
+                  }
                   }
             }
         }
