@@ -5,13 +5,13 @@ pipeline {
         stage('Maven') {
             steps {
                 fileExists 'C:\\Users\\mansan\\git\\googletest\\googleTest\\Resources\\local.properties'
-                properties([parameters([choice(choices: ['local', 'automation'], description: 'property files', name: 'propertyfiles')])])
+                properties([parameters([choice(choices: 'local', 'automation', description: 'property files', name: 'propertyfiles')])])
                 echo 'Testing..'
-                if(-DpropertyName=="local"){
+                if(${propertyfiles}=="local"){
                 sh 'mvn -Pprod clean test '
                   echo 'Testing sandeeeeeeeeeeeeeeep prod environment..'
                   }
-                  if(-DpropertyName=="automation"){
+                  if(${propertyfiles}=="automation"){
                 sh 'mvn -Pqa clean test '
                   echo 'Testing sandeeeeeeeeeeeeeeep..qa environment'
                   }
