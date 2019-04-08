@@ -1,7 +1,5 @@
 pipeline {
     agent any
-    {steps{script{}}}
-
     stages {
         stage('Maven') {
             steps {
