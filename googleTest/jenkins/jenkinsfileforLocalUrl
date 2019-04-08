@@ -8,10 +8,10 @@ pipeline {
                 properties([parameters([choice(choices: ['local', 'automation'], description: '', name: 'choices')])])
                 echo 'Testing..'
                 switch(choices){
-                case "local": bat 'sh 'mvn -Pprod clean test''
+                case "local": 'sh mvn -Pprod clean test'
                   echo 'Testing sandeeeeeeeeeeeeeeep prod environment..'
      
-                 case "automation": 'bat sh 'mvn -Pqa clean test''
+                 case "automation": 'sh mvn -Pqa clean test'
                   echo 'Testing sandeeeeeeeeeeeeeeep..qa environment'
                   }
                   }
